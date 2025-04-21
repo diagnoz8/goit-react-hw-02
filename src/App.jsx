@@ -16,7 +16,8 @@ function App() {
       <Description/>
       <Options feedbacks={feedbacks} setfeedbacks={ setfeedbacks} />
       <Feedback  feedbacks={feedbacks} />
-      </>
+    </>
+    
     
   )
 }
