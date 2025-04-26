@@ -10,7 +10,13 @@ function App() {
     neutral: 0,
     bad: 0
   });
-
+const resetFeedbacks = () => {
+  setFeedbacks(() => ({
+  good: 0,
+    neutral: 0,
+    bad: 0
+}))        ;
+    }
   const updateFeedback = feedbackType => {
     setFeedbacks((feedbacks) =>
     ({
@@ -23,7 +29,7 @@ function App() {
   return (
     <>
       <Description/>
-      <Options updateFeedback={updateFeedback} />
+      <Options updateFeedback={updateFeedback} resetFeedbacks= {resetFeedbacks} />
       <Feedback  feedbacks={feedbacks} />
     </>
     
