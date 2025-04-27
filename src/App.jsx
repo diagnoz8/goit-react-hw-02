@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import './App.css'
 import Description from './components/Description'
@@ -6,11 +6,20 @@ import Options from './components/Options'
 import Feedback from './components/Feedback'
 import Notification from './components/Notification'
 function App() {
-  const [feedbacks, setFeedbacks] = useState({
-    good: 0,
+  const [feedbacks, setFeedbacks] = useState(() => {
+    const savedFb = window.localStorage.getItem("feedbacks");
+    if (savedFb !== null) {
+      return JSON.parse(savedFb)
+    }
+      return {
+        good: 0,
     neutral: 0,
-    bad: 0
+    bad: 0}
   });
+  useEffect(() => {
+ window.localStorage.setItem("feedbacks", JSON.stringify(feedbacks))
+   }, [feedbacks]
+  )
 const resetFeedbacks = () => {
   setFeedbacks(() => ({
   good: 0,
